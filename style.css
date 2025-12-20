@@ -1,0 +1,261 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: 'Arial', sans-serif;
+  background: url('img/bg.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ===== Player Container ===== */
+.player {
+  width: 350px;
+  background: rgba(0,0,0,0.7);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.player:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Album Cover ===== */
+.cover {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  animation: float 3s ease-in-out infinite;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== Track Info ===== */
+.info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.info p {
+  margin: 5px 0 15px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* ===== Controls ===== */
+.controls button {
+  background: #ff3d6b;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  margin: 5px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.controls button:hover {
+  background: #ff577f;
+  transform: scale(1.1);
+}
+
+.controls button svg {
+  fill: #fff;
+  width: 22px;
+  height: 22px;
+}
+
+/* ===== Favorite Button Specific Styles ===== */
+.controls button.favorite {
+  background: #ff3d6b;
+}
+
+.controls button.favorite:hover {
+  background: #ff577f;
+}
+
+.controls button.favorite.favorited {
+  background: #ff1e4f;
+}
+
+/* ===== Progress Bar ===== */
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.progress-bar-wrapper {
+  position: relative;
+  width: 70%;
+  margin: 0 10px;
+}
+
+.progress-fill {
+  position: absolute;
+  height: 5px;
+  background: #ff3d6b;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: width 0.3s ease;
+}
+
+.progress-bar {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #555;
+  border-radius: 5px;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #ff3d6b;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.5);
+  width: 18px;
+  height: 18px;
+}
+
+.current-time, .duration {
+  min-width: 40px;
+}
+
+/* ===== Favorites Section ===== */
+.favorites-section {
+  margin-top: 20px;
+  color: #fff;
+}
+
+.favorites-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.favorite-item {
+  padding: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* ===== NEW: Favorites List Section ===== */
+.favorites-list-section {
+  margin-top: 20px;
+  color: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.favorites-list-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #ff3d6b;
+}
+
+.favorites-list {
+  text-align: left;
+}
+
+.favorite-list-item {
+  background: rgba(255, 61, 107, 0.1);
+  border: 1px solid rgba(255, 61, 107, 0.3);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.favorite-list-item:hover {
+  background: rgba(255, 61, 107, 0.2);
+  transform: translateX(5px);
+}
+
+.favorite-list-item .song-name {
+  font-weight: bold;
+  color: #fff;
+}
+
+.favorite-list-item .artist-name {
+  color: #ddd;
+  font-size: 0.8rem;
+}
+
+.no-favorites {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ===== Fade Transition ===== */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+/* ===== Background Overlay VFX ===== */
+.player::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url('img/background.svg') no-repeat center center;
+  background-size: cover;
+  top: -50%;
+  left: -50%;
+  opacity: 0.1;
+  z-index: 0;
+  animation: rotateBg 60s linear infinite;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Ensuring content above overlay */
+.player * { position: relative; z-index: 1; }
